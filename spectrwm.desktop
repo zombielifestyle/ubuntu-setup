@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=spectrwm
+Comment=leetness
+Exec=spectrwm
+##Exec=uxterm;spctrwm ##gnome-session --session=spectrwm
+##TryExec=uxterm;spectrwm
+Icon=
+Type=Application
+##X-Ubuntu-Gettext-Domain=gnome-session-3.0

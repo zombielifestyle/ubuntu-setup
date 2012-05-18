@@ -1,0 +1,9 @@
+[GNOME Session]
+Name=spectrwm
+RequiredComponents=gnome-settings-daemon;
+##RequiredProviders=windowmanager;panel;shell;
+##DefaultProvider-windowmanager=metacity
+##DefaultProvider-panel=unity-2d-panel
+##DefaultProvider-shell=unity-2d-shell
+
+DesktopName=spectrwm

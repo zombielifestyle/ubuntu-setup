@@ -1,0 +1,7 @@
+--ignore-dir=pictures
+--ignore-dir=tmp
+--no-sql
+--type-set
+smarty=.tpl,.inc
+--type-set
+sass=.sass,.scs% 
