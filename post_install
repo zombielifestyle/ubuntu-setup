@@ -1,4 +1,3 @@
-#fix sudo mania :S
 
 # upgrade
 sudo apt-get update && sudo apt-get upgrade
@@ -7,52 +6,54 @@ sudo apt-get update && sudo apt-get upgrade
 echo "export LIBOVERLAY_SCROLLBAR=0" | sudo tee  /etc/X11/Xsession.d/80overlayscrollbar
 
 # fix nameservers, pre 12.04
-#sed -i.bak 's/^#prepend .*$/prepend domain-name-servers 8.8.8.8;\nprepend domain-name-servers 8.8.4.4;/' /etc/dhcp/dhclient.conf
+#sudo sed -i.bak 's/^#prepend .*$/prepend domain-name-servers 8.8.8.8;\nprepend domain-name-servers 8.8.4.4;/' /etc/dhcp/dhclient.conf
 
 # chrome
 sudo apt-get install libxss1 libnss3-1d
 cd /tmp && wget -d http://dl.google.com/linux/direct/google-chrome-beta_current_i386.deb && sudo dpkg -i google-chrome-beta_current_i386.deb && cd -
 
 # base
-sudo apt-get install git terminator subversion mercurial meld kompare powertop gedit-plugins htop ack-grep
+sudo apt-get install git rxvt-unicode-256color subversion mercurial meld kompare powertop htop ack-grep
 
 # dropbox
 sudo apt-get install nautilus-dropbox
 #cd ~ && wget -O - "http://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
+
+sudo apt-get install gdm
 
 # dmenu
 sudo apt-get install suckless-tools
 
 # spectrwm
 #echo "xrandr --output VGA-0 --auto --output LVDS --auto" >> ~/.profile
-sudo apt-get install xtrlock xorg-dev xfonts-terminus libxtst-dev
+sudo apt-get install xlockmore xorg-dev xfonts-terminus libxtst-dev
 cd ~/Downloads && git clone git://opensource.conformal.com/spectrwm.git
 cd spectrwm/linux && make && sudo make install
 cd ~
 
-mv -i .spectrwm.conf .spectrwm.conf_bak
-ln -s ~/Dropbox/ubuntu/post_install/.spectrwm-XXX.conf .spectrwm.conf
-mv -i .Xmodmap .Xmodmap_bak
-ln -s ~/Dropbox/ubuntu/post_install/.Xmodmap-XXX.conf .Xmodmap
-mv -i .zshrc .zshrc_bak
-ln -s ~/Dropbox/ubuntu/post_install/.zshrc .zshrc
-
-# eh, link these!
+# move to dotspectrwm
 sudo cp ~/Dropbox/ubuntu/post_install/spectrwm.desktop /usr/share/xsessions/spectrwm.desktop
 sudo cp ~/Dropbox/ubuntu/post_install/spectrwm.session /usr/share/gnome-session/sessions/spectrwm.session
 
-
-sudo apt-get install apache2 php5-curl
+sudo apt-get install apache2 php5-curl libapache2-mod-php5
 sudo sed -i.bak 's/^Listen 80$/Listen 127.0.0.1:80/' /etc/apache2/ports.conf
 echo 'display_errors = 1' | sudo tee /etc/php5/conf.d/errors.ini
 
-sudo apt-get install mysql-server
-# use better default mysql config
+sudo apt-get install mysql-server 
+sudo apt-get install ruby1.8-dev
+sudo apt-get install xbacklight xclip
 
+#sudo apt-get install mumble
 
-sudo apt-get install mumble
-# projects ...
-# virtualbox
-# screen/byobu?
-# zsh
-# basic git setups
+git clone git@github.com:zombielifestyle/dotvim.git ~/.vim
+cd ~/.vim && ./install && cd ~
+
+git clone git@github.com:zombielifestyle/dotspectrwm.git ~/.spectrwm
+cd ~/.spectrwm && ./install && cd ~
+
+git clone git@github.com:zombielifestyle/bin-utils.git ~/bin
+
+# xmodmap
+# bash/zsh config
+#
+sudo apt-get autoremove
